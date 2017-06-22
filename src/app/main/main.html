@@ -8,8 +8,8 @@
         <h2 class="md-headline" style="margin-bottom: 2px; margin-top: 0px;" ng-bind="demo.demoType.name"></h2>
         <p class="md-subhead" style="color: #9e9e9e" ng-bind="demo.name"></p>
       </div>
-      <md-button class="md-secondary" ng-href="{{demo.url}}" ng-if="!isEmpty(demo.url)" style="margin-right: 200px; padding-left: 10px; padding-right: 10px;">View Demo <i class="material-icons md-18">open_in_new</i></md-button>
-      <md-button class="md-secondary" ng-click="oldname = demo.name; showEditDemo($event)" style="margin-right: 100px;">Edit</md-button>
+      <md-button class="md-secondary" ng-href="{{demo.url}}" ng-if="!isEmpty(demo.url)" target="_blank" style="margin-right: 200px; padding-left: 10px; padding-right: 10px;">View Demo <i class="material-icons md-18">open_in_new</i></md-button>
+      <md-button class="md-secondary" ng-click="showEditDemo($event, demo.name, demo.html, demo.demoType, demo.url)" style="margin-right: 100px;">Edit</md-button>
       <md-button class="md-secondary" ng-click="removeDemo(demo.name)">Remove</md-button>
       <md-divider ng-if="!$last"></md-divider>
     </md-list-item>

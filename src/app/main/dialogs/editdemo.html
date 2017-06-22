@@ -1,28 +1,47 @@
-﻿<form ng-controller='MainController' ng-cloak style='width: 800px'>
+﻿<form ng-cloak style='width: 800px' ng-controller="MainController">
   <md-toolbar>
     <div class='md-toolbar-tools'>
-      <h2 style='color: #fff !important;'>Edit Demo</h2>
-      <span flex></span>
-      <md-button class='md-icon-button' ng-click='cancel()'>
+      <h2 style='color: #fff !important;'>New Demo</h2><span flex></span>
+      <md-button class='md-icon-button' ng-click='$filterController.cancel()'>
         <i class='material-icons' style='color: #fff !important;'>clear</i>
       </md-button>
     </div>
   </md-toolbar>
   <md-dialog-content>
     <div class='md-dialog-content'>
-      <md-input-container class='md-block'>
-        <label>Name</label>
-        <input ng-model='newname'>
-      </md-input-container>
+      <div layout="row">
+        <md-input-container flex="50">
+          <label>Description (optional)</label>
+          <input name="name" ng-model="$filterController.newname">
+        </md-input-container>
+        <md-input-container flex="50">
+          <label>Demo Type</label>
+          <md-select name="demotype" ng-model="$filterController.demotypeid.id" required>
+            <md-option value="1">Confirmation Page</md-option>
+            <md-option value="2">Pre-Stay Landing Page</md-option>
+            <md-option value="3">Homepage</md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+      <div layout-gt-xs="row">
+        <md-input-container class="md-block" flex-gt-xs>
+          <label>URL To Fetch From (optional)</label>
+          <input ng-model="$filterController.url">
+        </md-input-container>
+
+        <md-input-container>
+          <md-button>Fetch</md-button>
+        </md-input-container>
+      </div>
     </div>
     <md-input-container class='md-block' style='padding-left: 25px; padding-right: 25px;'>
       <label style='margin-left:25px; margin-bottom: 5px;'>HTML</label>
-      <textarea ng-model='newhtml' rows='5' md-select-on-focus></textarea>
+      <textarea ng-model='$filterController.html' rows='5' md-select-on-focus required></textarea>
     </md-input-container>
   </md-dialog-content>
   <md-dialog-actions layout='row'>
     <span flex></span>
-    <md-button ng-click='cancel()'>Cancel</md-button>
-    <md-button ng-click='loggle()'>Save</md-button>
+    <md-button ng-click='$filterController.cancel()'>Cancel</md-button>
+    <md-button ng-click='$filterController.saveEdit($filterController.newname, $filterController.html, $filterController.demotypeid.id, $filterController.url)'>Save</md-button>
   </md-dialog-actions>
 </form>

@@ -9,10 +9,6 @@
         $scope.removeDemo = function (name) {
             demosService.removeDemo(name);
         };
- 
-        $scope.updateDemo = function (oldName, newName, html, demotype, url) {
-            demosService.updateDemo(oldName, newName, html, demotype, url);
-        }
 
         $scope.getDemos = function () {
             return demosService.getDemos();
@@ -43,31 +39,41 @@
             return (thing == "" || typeof thing == "undefined");
         }
 
-        $scope.saveEdit = function (oldname) {
-            //$scope.updateDemo($scope.demo.name, $scope.demo.newname, $scope.demo.newhtml, $scope.demo.newdemotypeid);
-            $log.log($scope.oldname + ", " + $scope.newname + ", " + $scope.newhtml);
+        $scope.saveEdit = function (newname, html, demotype, url) {
+            demosService.updateDemo(this.oldname, newname, html, demotype, url);
+            $scope.cancel();
         };
 
         $scope.showNewDemo = function (ev) {
+            var me = this;
             $mdDialog.show({
-                controller: MainController,
                 templateUrl: "app/main/dialogs/newdemo.html",
-                parent: angular.element($document.body),
                 targetEvent: ev,
+                fullscreen: $scope.customFullscreen,
+                parent: angular.element($document.body),
+                controller: function () { return me },
+                controllerAs: '$filterController',
                 clickOutsideToClose: true,
-                fullscreen: $scope.customFullscreen
+                escapeToClose: true
             });
         };
 
-        $scope.showEditDemo = function (ev) {
-            $log.log($scope.newname + ", " + $scope.newhtml + ", " + $scope.oldname);
+        $scope.showEditDemo = function (ev, oldname, html, demotype, url) {
+            this.oldname = oldname;
+            this.newname = oldname;
+            this.html = html;
+            this.url = url;
+            this.demotypeid = demotype;
+            var me = this;
             $mdDialog.show({
-                controller: MainController,
                 templateUrl: "app/main/dialogs/editdemo.html",
-                parent: angular.element($document.body),
                 targetEvent: ev,
+                fullscreen: $scope.customFullscreen,
+                parent: angular.element($document.body),
+                controller: function () { return me },
+                controllerAs: '$filterController',
                 clickOutsideToClose: true,
-                fullscreen: $scope.customFullscreen
+                escapeToClose: true
             });
         };
     }
