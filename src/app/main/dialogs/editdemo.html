@@ -1,0 +1,28 @@
+﻿<form ng-controller='MainController' ng-cloak style='width: 800px'>
+  <md-toolbar>
+    <div class='md-toolbar-tools'>
+      <h2 style='color: #fff !important;'>Edit Demo</h2>
+      <span flex></span>
+      <md-button class='md-icon-button' ng-click='cancel()'>
+        <i class='material-icons' style='color: #fff !important;'>clear</i>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <div class='md-dialog-content'>
+      <md-input-container class='md-block'>
+        <label>Name</label>
+        <input ng-model='newname'>
+      </md-input-container>
+    </div>
+    <md-input-container class='md-block' style='padding-left: 25px; padding-right: 25px;'>
+      <label style='margin-left:25px; margin-bottom: 5px;'>HTML</label>
+      <textarea ng-model='newhtml' rows='5' md-select-on-focus></textarea>
+    </md-input-container>
+  </md-dialog-content>
+  <md-dialog-actions layout='row'>
+    <span flex></span>
+    <md-button ng-click='cancel()'>Cancel</md-button>
+    <md-button ng-click='loggle()'>Save</md-button>
+  </md-dialog-actions>
+</form>

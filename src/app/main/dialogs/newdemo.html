@@ -1,0 +1,37 @@
+﻿<form ng-cloak style='width: 800px'>
+  <md-toolbar>
+    <div class='md-toolbar-tools'>
+      <h2 style='color: #fff !important;'>New Demo</h2><span flex></span>
+      <md-button class='md-icon-button' ng-click='cancel()'>
+        <i class='material-icons' style='color: #fff !important;'>clear</i>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <div class='md-dialog-content'>
+      <div layout="row">
+        <md-input-container flex="50">
+          <label>Description</label>
+          <input required name="name" ng-model="newdemo.name">
+        </md-input-container>
+        <md-input-container flex="50">
+          <label>Demo Type</label>
+          <md-select name="type" ng-model="newdemo.demotype" required>
+            <md-option value="1">Application</md-option>
+            <md-option value="2">Website</md-option>
+            <md-option value="3">Website</md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+    </div>
+    <md-input-container class='md-block' style='padding-left: 25px; padding-right: 25px;'>
+      <label style='margin-left:25px; margin-bottom: 5px;'>HTML</label>
+      <textarea ng-model='newdemo.html' rows='5' md-select-on-focus></textarea>
+    </md-input-container>
+  </md-dialog-content>
+  <md-dialog-actions layout='row'>
+    <span flex></span>
+    <md-button ng-click='cancel()'>Cancel</md-button>
+    <md-button ng-click='saveNew()'>Save</md-button>
+  </md-dialog-actions>
+</form>

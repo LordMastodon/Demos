@@ -8,7 +8,7 @@
         <h1 class="md-display-1">{{demo.name}}</h1>
       </div>
       <md-button class="md-secondary" ng-click="oldname = demo.name; showEditDemo($event)" style="margin-right: 100px;">Edit</md-button>
-      <md-button class="md-secondary" ng-click="removeDemo(demo.name)">{{oldname}}</md-button>
+      <md-button class="md-secondary" ng-click="removeDemo(demo.name)">Remove</md-button>
       <md-divider ng-if="!$last"></md-divider>
     </md-list-item>
   </md-list>

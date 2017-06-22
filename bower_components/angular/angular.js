@@ -26485,7 +26485,9 @@ var ngControllerDirective = [function() {
           }
 
           beforeEach(function() {
-            util = require('util');
+            util =
+
+    'util');
             webdriver = require('selenium-webdriver');
           });
 
