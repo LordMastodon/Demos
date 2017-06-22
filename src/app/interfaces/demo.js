@@ -1,8 +1,9 @@
 ﻿export class Demo {
-    constructor(name, html, demoType) {
+    constructor(name, html, demoType, url) {
         this.name = name;
         this.html = html;
         this.demoType = demoType;
+        this.url = url;
     }
 
     getName() {
@@ -27,5 +28,13 @@
 
     setDemoType(demoType) {
         this.demoType = demoType;
+    }
+
+    getUrl() {
+        return this.url;
+    }
+
+    setUrl(url) {
+        this.url = url;
     }
 }

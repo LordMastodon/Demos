@@ -5,11 +5,11 @@ export class DemosService {
     constructor() {
         'ngInject';
 
-        this.demos = [new Demo("Example Demo", "<b>Example Demo</b>", this.CONFIRMATION_PAGE), new Demo("Example Demo 2", "<b>Example Demo 2</b>", this.PRESTAY_LANDING_PAGE)];
-    
         this.CONFIRMATION_PAGE = new DemoType('Confirmation Page', 1);
         this.PRESTAY_LANDING_PAGE = new DemoType('Pre-Stay Landing Page', 2);
         this.HOMEPAGE = new DemoType('Homepage', 3);
+
+        this.demos = [new Demo("Example Demo", "<b>Example Demo</b>", this.CONFIRMATION_PAGE, ""), new Demo("Example Demo 2", "<b>Example Demo 2</b>", this.PRESTAY_LANDING_PAGE, "")];
     }
 
     findDemoByName(name) {
@@ -23,33 +23,30 @@ export class DemosService {
     }
 
     getDemoTypeByID(id) {
-        if (id === 1) {
+        if (id == 1) {
             return this.CONFIRMATION_PAGE;
-        } else if (id === 2) {
+        } else if (id == 2) {
             return this.PRESTAY_LANDING_PAGE;
-        } else if (id === 3) {
+        } else if (id == 3) {
             return this.HOMEPAGE;
         }
 
         return;
     }
 
-    addDemo(name, html, demotype) {
-        this.demos.push(new Demo(name, html, this.getDemoTypeByID(demotype)));
+    addDemo(name, html, demotype, url) {
+        this.demos.push(new Demo(name, html, demotype, url));
     }
 
     removeDemo(name) {
         this.demos.splice(this.findDemoByName(name), 1);
     }
 
-    updateDemo(oldName, newName, html, demotype) {
+    updateDemo(oldName, newName, html, demotype, url) {
         this.demos[this.demos.findDemoByName(oldName)].setName(newName);
         this.demos[this.demos.findDemoByName(oldName)].setHtml(html);
-        this.demos[this.demos.findDemoByName(oldName)].setDemoType(this.getDemoTypeByID(demotype));
-    }
-
-    getDemoInfo(name) {
-        return new Demo(this.demos[this.findDemoByName(name)].getName(), this.demos[this.findDemoByName(name)].getHtml(), this.demos[this.findDemoByName(name)].getDemoType().getName());
+        this.demos[this.demos.findDemoByName(oldName)].setDemoType(demotype);
+        this.demos[this.demos.findDemoByName(oldName)].setUrl(url);
     }
 
     getDemos() {

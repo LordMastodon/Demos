@@ -5,10 +5,10 @@
   }
 
   getName() {
-    return name;
+    return this.name;
   }
 
   getID() {
-    return id;
+    return this.id;
   }
 }

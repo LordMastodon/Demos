@@ -2,34 +2,25 @@
     constructor ($scope, $log, $document, $mdDialog, demosService) {
         'ngInject';
 
-        $scope.addDemo = function (name, html, demotype) {
-            demosService.addDemo(name, html, demotype);
+        $scope.addDemo = function (name, html, demotype, url) {
+            demosService.addDemo(name, html, demotype, url);
         };
 
-        //$scope.getHTML = function (url) {
-        //    var xmlHttp = null;
-
-        //    xmlHttp = new XMLHttpRequest();
-        //    xmlHttp.open("GET", url, false);
-        //    xmlHttp.send(null);
-        //    $log.log(xmlHttp.responseText);
-        //}
-
-        $scope.removeDemo = function (name, html) {
-            demosService.removeDemo(name, html);
+        $scope.removeDemo = function (name) {
+            demosService.removeDemo(name);
         };
  
-        $scope.updateDemo = function (oldName, newName, html, demotype) {
-
-        };
-
-        $scope.getDemoInfo = function (name) {
-
-        };
+        $scope.updateDemo = function (oldName, newName, html, demotype, url) {
+            demosService.updateDemo(oldName, newName, html, demotype, url);
+        }
 
         $scope.getDemos = function () {
             return demosService.getDemos();
         };
+
+        $scope.getDemoTypeByID = function (ID) {
+            return demosService.getDemoTypeByID(ID);
+        }
 
         $scope.hide = function () {
             $mdDialog.hide();
@@ -40,12 +31,16 @@
         };
 
         $scope.saveNew = function () {
-            $scope.addDemo($scope.newdemo.name, $scope.newdemo.html, $scope.newdemo.demotype);
+            $scope.addDemo($scope.newdemo.name, $scope.newdemo.html, $scope.getDemoTypeByID($scope.newdemo.demotypeid), $scope.newdemo.url);
             $scope.cancel();
         };
 
         $scope.loggle = function (log) {
             $log.log(log);
+        }
+
+        $scope.isEmpty = function (thing) {
+            return (thing == "" || typeof thing == "undefined");
         }
 
         $scope.saveEdit = function (oldname) {
